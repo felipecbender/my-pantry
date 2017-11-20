@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "875926526762",
+    "firebase_url": "https://mypantry-app.firebaseio.com",
+    "project_id": "mypantry-app",
+    "storage_bucket": "mypantry-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875926526762:android:bdc76f0dfe2b9605",
+        "android_client_info": {
+          "package_name": "com.bender.mypantry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "875926526762-dgfv5t4ia1hitpauu9pat8da7qjk09ns.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bender.mypantry",
+            "certificate_hash": "0da3d9b07b7b6c77516cf1393c823c5256610230"
+          }
+        },
+        {
+          "client_id": "875926526762-cuto5uk5ad5iistc8pte37phr7sjeun7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgBYU0JCdsWsJZf-EHaMngqJxkZ7Yifzk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "875926526762-cuto5uk5ad5iistc8pte37phr7sjeun7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
