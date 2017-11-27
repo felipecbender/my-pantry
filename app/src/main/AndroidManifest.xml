@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".FoodListActivity"
+            android:name=".PantryListActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,7 +18,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FormActivity">
+            android:name=".FoodListActivity"
+            android:label="Foods">
+        </activity>
+        <activity
+            android:name=".form.PantryFormActivity">
+        </activity>
+        <activity
+            android:name=".form.FoodFormActivity">
         </activity>
     </application>
 

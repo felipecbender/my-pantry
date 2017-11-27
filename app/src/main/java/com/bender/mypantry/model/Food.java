@@ -12,6 +12,7 @@ public class Food implements Serializable {
     private double value;
     private double qtd;
     private String type;
+    private Long pantryId;
 
     public Food() {
     }
@@ -54,6 +55,14 @@ public class Food implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Long getPantryId() {
+        return pantryId;
+    }
+
+    public void setPantryId(Long pantryId) {
+        this.pantryId = pantryId;
     }
 
     @Override

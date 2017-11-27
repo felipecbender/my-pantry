@@ -18,12 +18,12 @@ import java.util.List;
 
 public class FoodDAO extends SQLiteOpenHelper {
     public FoodDAO(Context context) {
-        super(context, "FoodDB", null, 1);
+        super(context, "food", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE food (id INTEGER PRIMARY KEY, name TEXT, value REAL, qtd REAL DEFAULT 0, type TEXT)";
+        String sql = "CREATE TABLE food (id INTEGER PRIMARY KEY, name TEXT, value REAL DEFAULT 0, qtd REAL DEFAULT 0, type TEXT, pantryId INTEGER)";
         db.execSQL(sql);
     }
 
@@ -40,13 +40,20 @@ public class FoodDAO extends SQLiteOpenHelper {
         db.insert("Food", null, data);
     }
 
-    public List<Food> readListFood() {
+    public List<Food> readListFood(Long pantryId) {
         String sql = "SELECT * FROM Food";
+        String[] params = null;
+
+        if (pantryId != null) {
+            sql += " Where pantryId = ? ";
+            params = new String[] { pantryId.toString() };
+        }
+
         SQLiteDatabase db = getReadableDatabase();
 
         List<Food> listFood = new ArrayList<>();
 
-        Cursor cursor = db.rawQuery(sql, null);
+        Cursor cursor = db.rawQuery(sql, params);
         while(cursor.moveToNext()) {
             Food food = new Food();
             food.setId(cursor.getLong(cursor.getColumnIndex("id")));
@@ -54,6 +61,7 @@ public class FoodDAO extends SQLiteOpenHelper {
             food.setQtd(cursor.getDouble(cursor.getColumnIndex("qtd")));
             food.setType(cursor.getString(cursor.getColumnIndex("type")));
             food.setValue(cursor.getDouble(cursor.getColumnIndex("value")));
+            food.setPantryId(cursor.getLong(cursor.getColumnIndex("pantryId")));
             listFood.add(food);
         }
         cursor.close();
@@ -70,8 +78,7 @@ public class FoodDAO extends SQLiteOpenHelper {
     public void delete(Food food) {
         SQLiteDatabase db = getReadableDatabase();
         String[] params = new String[] { food.getId().toString() };
-        int foi = db.delete("Food", "id = ?", params);
-        System.out.println("Teste: " +foi);
+        db.delete("Food", "id = ?", params);
     }
 
     @NonNull
@@ -81,6 +88,7 @@ public class FoodDAO extends SQLiteOpenHelper {
         data.put("value", food.getValue());
         data.put("qtd", food.getQtd());
         data.put("type", food.getType());
+        data.put("pantryId", food.getPantryId());
         return data;
     }
 }
